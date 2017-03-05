@@ -1,0 +1,8 @@
+C:\Users\Cristian\codecamp\m2-c#\webApp\QuizLibrary\QuizCli\bin\Debug\QuizCli.exe.config
+C:\Users\Cristian\codecamp\m2-c#\webApp\QuizLibrary\QuizCli\bin\Debug\QuizCli.exe
+C:\Users\Cristian\codecamp\m2-c#\webApp\QuizLibrary\QuizCli\bin\Debug\QuizCli.pdb
+C:\Users\Cristian\codecamp\m2-c#\webApp\QuizLibrary\QuizCli\bin\Debug\QuizLibrary.dll
+C:\Users\Cristian\codecamp\m2-c#\webApp\QuizLibrary\QuizCli\bin\Debug\QuizLibrary.pdb
+C:\Users\Cristian\codecamp\m2-c#\webApp\QuizLibrary\QuizCli\obj\Debug\QuizCli.csprojResolveAssemblyReference.cache
+C:\Users\Cristian\codecamp\m2-c#\webApp\QuizLibrary\QuizCli\obj\Debug\QuizCli.exe
+C:\Users\Cristian\codecamp\m2-c#\webApp\QuizLibrary\QuizCli\obj\Debug\QuizCli.pdb

@@ -1,0 +1,5 @@
+C:\Users\Cristian\codecamp\m2-c#\webApp\QuizLibrary\QuizLibrary\bin\Debug\QuizLibrary.dll
+C:\Users\Cristian\codecamp\m2-c#\webApp\QuizLibrary\QuizLibrary\bin\Debug\QuizLibrary.pdb
+C:\Users\Cristian\codecamp\m2-c#\webApp\QuizLibrary\QuizLibrary\obj\Debug\QuizLibrary.dll
+C:\Users\Cristian\codecamp\m2-c#\webApp\QuizLibrary\QuizLibrary\obj\Debug\QuizLibrary.pdb
+C:\Users\Cristian\codecamp\m2-c#\webApp\QuizLibrary\QuizLibrary\obj\Debug\QuizLibrary.csprojResolveAssemblyReference.cache

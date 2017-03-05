@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron" id="index-banner-holder">
+    @*<h1>Quiz Game App</h1>
+    <p class="lead"> Start taking, creating, or managing quizes now.</p>*@
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2 class="subheading">Create Quiz</h2>
+        <p>
+            Login or create an account to create new quizzes from small to large sizes.
+        </p>
+        <p class="btn btn-default btn-sm site-buttons">@Html.ActionLink("Create", "Create", "QuizManager")</p>
+    </div>
+    <div class="col-md-4">
+        <h2 class="subheading">Take Quiz</h2>
+        <p>Login to take your created quizzes or take some of the sample quizzes.</p>
+        <p class="btn btn-default btn-sm site-buttons">@Html.ActionLink("Take", "Index", "QuizManager")</p>
+    </div>
+    <div class="col-md-4">
+        <h2 class="subheading">Manage Quiz</h2>
+        <p>Login to manage your created quizzes. Manage entire quizzes or individual questions.</p>
+        <p class="btn btn-default btn-sm site-buttons">@Html.ActionLink("Manage", "Index", "QuizManager")</p>
+    </div>
+</div>

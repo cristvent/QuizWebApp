@@ -1,0 +1,73 @@
+﻿body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+#index-banner-holder {
+    background-image: url("Images/notebook-banner-small.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    color: black;
+    border-radius: 0px;
+    height: 250px;
+    margin: 0px -15px;
+}
+
+#navbar-custom {
+    background-color: #768286;
+    border-color: #D7CDC5;
+}
+
+.navbar-inverse .navbar-toggle {
+    border-color: #D7CDC5;
+}
+
+.navbar-inverse .navbar-brand {
+    color: #D7CDC5;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: white;
+}
+; 
+.site-buttons,.site-buttons a {
+    background-color: #768286;
+    color: white;
+}
+
+.site-buttons a {
+    background-color: transparent;
+}
+
+.site-buttons a:hover {
+    background-color: transparent;
+}
+
+#action-dropdown{
+    list-style: none;
+}
+
+.edit-checkbox{
+    width: auto;
+    border-bottom: 1px solid black;
+}
+
+
+.subheading{
+    color: grey;
+}
+
+footer{
+    text-align: center;
+}
+
+
+@media(min-width: 768px) {
+    #index-banner-holder {
+        background-image: url("Images/notebook-banner-wide.jpg");
+        height: 350px;
+    }
+
+    #nav-dropdown-right{
+        margin-left: 15px;
+    }
+}
