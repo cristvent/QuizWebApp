@@ -33,6 +33,7 @@ namespace QuizWebApp.Controllers
 
         // POST: Quiz/Create
         [HttpPost]
+        [AllowAnonymous]
         public ActionResult Create(Quiz newQuiz, FormCollection collection)
         {
             try
@@ -56,12 +57,12 @@ namespace QuizWebApp.Controllers
 
         // POST: Quiz/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, Quiz quizChanged, FormCollection collection)
         {
             try
             {
                 // TODO: Add update logic here
-
+                _quizStorage.EditQuiz(id, quizChanged);
                 return RedirectToAction("Index");
             }
             catch

@@ -33,18 +33,25 @@ namespace QuizLibrary
             _quizStorage.Add(newQuiz);
         }
 
+        public void EditQuiz(int id, Quiz quizChanged)
+        {
+            _quizStorage[id] = quizChanged;
+        }
+
         public void LoadQuizSample()
         {
             Quiz newQuiz = new Quiz()
             {
                 Title = "Objects and Classes",
-                Topic = "Javascript"
+                Topic = "Javascript",
+                Active = false
             };
 
             Quiz newQuiz2 = new Quiz()
             {
                 Title = "Evolution",
-                Topic = "Biology"
+                Topic = "Biology",
+                Active = true
             };
 
             AddQuiz(newQuiz);

@@ -16,6 +16,7 @@ namespace QuizLibrary
         [Required]
         public string Topic { get; set; }
         public List<QuizQuestion> Questions { get; set; }
+        public bool Active { get; set; }
 
         public override string ToString()
         {
