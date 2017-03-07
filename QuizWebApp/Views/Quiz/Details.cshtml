@@ -34,6 +34,22 @@
             @Html.DisplayFor(model => model.Active)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.Questions)
+        </dt>
+
+        <dd>
+            @foreach (var item in Model.Questions)
+            {
+                <p><b>@item.Content</b></p>
+                <ul class="list-group">
+                    @foreach (var answers in item.Answers)
+                    {
+                        <li class="list-group-item"> @answers.Content - @answers.IsCorrect </li>
+                    }
+                </ul>
+            }
+        </dd>
     </dl>
 </div>
 <p>

@@ -60,6 +60,40 @@
     margin: 0px;
 }
 
+#question-body {
+    padding: 0px;
+    padding-left: 15px;
+    padding-bottom: 5px;
+}
+
+#question-body input{
+    margin: 5px 10px 5px 0px;
+    max-width: none;
+    width: 90%;
+}
+
+#question-body a {
+    margin-bottom: 5px;
+}
+
+.answers-body .col-md-12, .answers-body .col-md-8{
+    padding-left: 0px;
+}
+
+.answers-body .col-md-12{
+    margin-top: 10px;
+}
+
+#new-answer-holder .edit-checkbox{
+    width: 15px;
+    height: 34px;
+}
+
+#new-answer-holder input{
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
 footer{
     text-align: center;
 }

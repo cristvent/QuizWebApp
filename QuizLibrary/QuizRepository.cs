@@ -77,7 +77,6 @@ namespace QuizLibrary
             QuizQuestion newQuestion = new QuizQuestion()
             {
                 Category = "Geography",
-                QuestionType = "Multiple Choice",
                 Content = "What state are we in right now?",
                 Answers = new List<QuizAnswer>
                 {

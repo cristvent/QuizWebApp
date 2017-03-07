@@ -33,14 +33,6 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.QuestionType, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("QuestionType", new SelectList(ViewBag.QuestionTypeList), new { @class = "form-control", id = "QuestionType" })
-                @Html.ValidationMessageFor(model => model.QuestionType, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
             @Html.LabelFor(model => model.Answers, htmlAttributes: new { @class = "control-label col-md-2" })
             @{
                 <div class="col-md-10">

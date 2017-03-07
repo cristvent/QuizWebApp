@@ -5,37 +5,26 @@
         nextId = 0;
 
     var questionTemplate =
-    '<div class="panel-heading">' +
+    '<div id="question-heading" class="panel-heading">' +
     '<h5> Question {{~}}</h5>' +
     '</div>' +
-    '<div class="panel-body">' +
-    '<input type="text" id="{{~}}" name="{{~}}" class="form-control"/>' +
-    '<br />' +
-    '<a href="#q{{~}}-answers" data-toggle="collapse">Q {{~}} - Answers</a>' +
-    '<div id="q{{~}}-answers" class="collapse">' +
-    '<br />' +
+    '<div id="question-body" class="panel-body">' +
+    '<input type="text" id="Questions[{{~}}].Content" name="Questions[{{~}}].Content" class="form-control"/>' +
+    '<a href="#{{~}}" data-toggle="collapse">Q {{~}} - Answers</a>' +
+    '<div id="{{~}}" class="collapse answers-body">' +
     '<button type="button" class="btn btn-success btn-xs" id="add-answer-button-{{~}}"> Add Answer </button>' +
-    '<div class="col-md-12">' +
-    '<br />' +
-    '<div class="col-md-6">' +
-    '<h5>Answer </h5>' +
-    '</div>' +
-    '<div class="col-md-6">' +
-    '<h5> Is Correct </h5>' +
-    '</div>' +
     '</div>' +
     '</div>' +
     '</div>';
 
     var answerTemplate =
-    '<div class="col-md-12">' +
-    '<br />' +
-    '<div class="col-md-6">' +
+    '<div id="new-answer-holder" class="col-md-12">' +
+    '<div class="col-md-8">' +
     '<input type="text" id="{{~}}" name="{{~}}" class="form-control"/>' +
     '</div>' +
-    '<div class="col-md-6">' +
-    '<input type="checkbox" id="{{~}}}" name="{{~}}" class="form-control edit-checkbox" value="true" />' +
-    '<input type="hidden" id="{{~}}" name="{{~}}" class="form-control" value="false" />' +
+    '<div class="col-md-4">' +
+    '<input type="checkbox" id="{{#}}" name="{{#}}" class="form-control edit-checkbox" value="true" />' +
+    '<input type="hidden" id="{{#}}" name="{{#}}" class="form-control" value="false" />' +
     '</div>' +
     '</div>';
 
@@ -51,10 +40,12 @@
     })
 
     var addAnswer = function addAnswer() {
-        //var questionTemp = answerTemplate.replace(/{{~}}/g, nextId++);
         var answerHolder = document.getElementById(this.parentElement.id);
+        var answerCounter = (answerHolder.childElementCount) - 1;
         var answerTemp = document.createElement("div");
-        answerTemp.innerHTML = answerTemplate;
+        var tempWithReplaces = answerTemplate.replace(/{{~}}/g, "Questions[" + answerHolder.id + "].Answers[" + answerCounter + "].Content")
+            .replace(/{{#}}/g, "Questions[" + answerHolder.id + "].Answers[" + answerCounter + "].IsCorrect");
+        answerTemp.innerHTML = tempWithReplaces;
         answerHolder.appendChild(answerTemp);
     }
 

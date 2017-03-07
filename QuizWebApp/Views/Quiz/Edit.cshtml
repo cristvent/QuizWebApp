@@ -9,16 +9,12 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-
-
     <div class="form-horizontal row">
-
         <div class="col-md-4">
             <h4>Quiz</h4>
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             @Html.HiddenFor(model => model.Id)
-
             <div class="form-group">
                 @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -26,7 +22,6 @@
                     @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
                 </div>
             </div>
-
             <div class="form-group">
                 @Html.LabelFor(model => model.Topic, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -34,7 +29,6 @@
                     @Html.ValidationMessageFor(model => model.Topic, "", new { @class = "text-danger" })
                 </div>
             </div>
-
             <div class="form-group">
                 @Html.LabelFor(model => model.Active, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -44,17 +38,45 @@
                     </div>
                 </div>
             </div>
-
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
                     <input type="submit" value="Save" class="btn btn-default" />
                 </div>
             </div>
         </div>
-
         <div id="edit-question-holder" class="col-md-8">
             <h4>Questions</h4>
             <hr />
+            <div id="all-questions">
+                <p> All questions</p>
+                @for (var x = 0; x < Model.Questions.Count; x++)
+                {
+                    @Html.HiddenFor(model => Model.Questions[x].Id)
+                    <div class="panel panel-default">
+                        <div class="panel-heading">@Model.Questions[x].Id </div>
+                        <div id="question-body" class="panel-body">
+                            @Html.EditorFor(model => Model.Questions[x].Content, new { htmlAttributes = new { @class = "form-control" } })
+                            <a href="#@x" data-toggle="collapse">Q @Model.Questions[x].Id - Answers</a>
+                            <div id="@x" class="collapse answers-body">
+                                <button type="button" class="btn btn-success btn-xs" id="add-answer-button-{{~}}"> Add Answer </button>
+                                @for (var i = 0; i < Model.Questions[x].Answers.Count; i++)
+                                {
+                                    <div class="col-md-12">
+                                        <div class="col-md-8">
+                                            @Html.HiddenFor(model => Model.Questions[x].Answers[i].Id)
+                                            @Html.EditorFor(model => Model.Questions[x].Answers[i].Content, new { htmlAttributes = new { @class = "form-control" } })
+                                        </div>
+                                        <div class="col-md-4">
+                                            @Html.EditorFor(model => Model.Questions[x].Answers[i].IsCorrect, new { htmlAttributes = new { @class = "form-control edit-checkbox" } })
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <br />
             <div>
                 <button type="button" class="btn btn-primary btn-xs" id="add-content-button"> Add Question </button>
             </div>
@@ -62,7 +84,6 @@
             <div id="question-holder">
             </div>
         </div>
-        @*Div ending*@
     </div>
 }
 

@@ -14,13 +14,8 @@ namespace QuizLibrary
         public string Category { get; set; }
         [Required]
         public string Content { get; set; }
-        //public string ImageUrl { get; set; }
         [Required]
         public List<QuizAnswer> Answers { get; set; }
-        //public string MoreInfoUrl { get; set; }
-        public string QuestionType { get; set; }
-        //public string ReasonForAnswer { get; set; }
-
         public override string ToString()
         {
             return Id + " " + Content;

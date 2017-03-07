@@ -44,20 +44,77 @@ namespace QuizLibrary
             {
                 Title = "Objects and Classes",
                 Topic = "Javascript",
-                Active = false
-            };
+                Active = false,
+                Questions = new List<QuizQuestion>
+                {
+                   new QuizQuestion
+                   {
+                       Id = 0,
+                       Content = "What is your name?",
+                       Answers = new List<QuizAnswer>
+                       {
+                           new QuizAnswer {
+                               Id = 0,
+                               Content = "Wilmer",
+                               IsCorrect = false
+                           },
+                           new QuizAnswer
+                           {
+                               Id = 1,
+                              Content = "Bob",
+                              IsCorrect = false
+                           },
+                           new QuizAnswer
+                           {
+                               Id = 2,
+                               Content = "Ricky",
+                               IsCorrect = false
+                           },
+                           new QuizAnswer
+                           {
+                               Id = 3,
+                               Content = "Cristian",
+                               IsCorrect = true
+                           }
+                       }
+                   },
 
-            Quiz newQuiz2 = new Quiz()
-            {
-                Title = "Evolution",
-                Topic = "Biology",
-                Active = true
+                   new QuizQuestion
+                   {
+                       Id = 1,
+                       Content = "What state are we located in?",
+                       Answers = new List<QuizAnswer>
+                       {
+                           new QuizAnswer {
+                               Id = 0,
+                               Content = "Florida",
+                               IsCorrect = false
+                           },
+                           new QuizAnswer
+                           {
+                               Id = 1,
+                              Content = "Kansas",
+                              IsCorrect = false
+                           },
+                           new QuizAnswer
+                           {
+                               Id = 2,
+                               Content = "Georgia",
+                               IsCorrect = true
+                           },
+                           new QuizAnswer
+                           {
+                               Id = 3,
+                               Content = "Texas",
+                               IsCorrect = false
+                           }
+                       }
+                   }
+                }
             };
-
             AddQuiz(newQuiz);
-            AddQuiz(newQuiz2);
         }
 
-        
+
     }
 }
