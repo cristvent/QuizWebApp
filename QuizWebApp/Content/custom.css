@@ -28,73 +28,90 @@
 .navbar-inverse .navbar-nav > li > a {
     color: white;
 }
-; 
-.site-buttons,.site-buttons a {
+
+.site-buttons, .site-buttons a {
     background-color: #768286;
     color: white;
 }
 
-.site-buttons a {
-    background-color: transparent;
-}
+    .site-buttons a {
+        background-color: transparent;
+    }
 
-.site-buttons a:hover {
-    background-color: transparent;
-}
+        .site-buttons a:hover {
+            background-color: transparent;
+        }
 
-#action-dropdown{
+#action-dropdown {
     list-style: none;
 }
 
-.edit-checkbox{
-    width: auto;
-    border-bottom: 1px solid black;
+.edit-checkbox {
+    width: 15px;
+    height: 34px;
 }
 
-
-.subheading{
+.subheading {
     color: grey;
 }
 
-#edit-question-holder h5{
+#edit-question-holder h5 {
     margin: 0px;
 }
 
 #question-body {
     padding: 0px;
-    padding-left: 15px;
+    padding-left: 5px;
     padding-bottom: 5px;
 }
 
-#question-body input{
-    margin: 5px 10px 5px 0px;
-    max-width: none;
-    width: 90%;
-}
+    .new-answer-holder input {
+        margin: 5px 10px 5px 0px;
+        max-width: none;
+        width: 90%;
+    }
 
-#question-body a {
-    margin-bottom: 5px;
-}
+    #question-body a {
+        margin-bottom: 5px;
+    }
 
-.answers-body .col-md-12, .answers-body .col-md-8{
+.answers-body .col-md-12, .answers-body .col-md-8 {
     padding-left: 0px;
 }
 
-.answers-body .col-md-12{
-    margin-top: 10px;
-}
-
-#new-answer-holder .edit-checkbox{
+.new-answer-holder .edit-checkbox {
     width: 15px;
     height: 34px;
 }
 
-#new-answer-holder input{
-    margin-top: 0px;
-    margin-bottom: 0px;
+.add-button{
+    margin: 15px 0px;
 }
 
-footer{
+.question-content-input{
+    margin-top: 5px;
+    width: 90%;
+    max-width: none;
+}
+
+.question-heading{
+    padding: 2px 5px;
+}
+
+#question-body .edit-checkbox {
+    width: 15px;
+    height: 34px;
+}
+
+.answer-content-input{
+    padding-right: 0px;
+}
+
+.answer-iscorrect-input{
+    padding-left: 0px;
+}
+
+footer {
     text-align: center;
 }
 
@@ -105,7 +122,7 @@ footer{
         height: 350px;
     }
 
-    #nav-dropdown-right{
+    #nav-dropdown-right {
         margin-left: 15px;
     }
 }
