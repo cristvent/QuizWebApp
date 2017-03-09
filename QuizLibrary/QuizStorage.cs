@@ -35,6 +35,13 @@ namespace QuizLibrary
 
         public void EditQuiz(int id, Quiz quizChanged)
         {
+            //_quizStorage[id] = quizChanged;
+            _quizStorage.RemoveAll(quiz => quiz.Id == id);
+            _quizStorage.Add(quizChanged);
+        }
+
+        public void DeleteContent(int id, Quiz quizChanged)
+        {
             _quizStorage[id] = quizChanged;
         }
 

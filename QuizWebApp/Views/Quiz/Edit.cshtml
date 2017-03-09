@@ -31,8 +31,8 @@
             </div>
             <div class="form-group">
                 @Html.LabelFor(model => model.Active, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    <div class="checkbox">
+                <div class="col-md-10 status-checkbox">
+                    <div class="">
                         @Html.EditorFor(model => model.Active)
                         @Html.ValidationMessageFor(model => model.Active, "", new { @class = "text-danger" })
                     </div>
@@ -40,7 +40,7 @@
             </div>
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Save" class="btn btn-default" />
+                    <input type="submit" value="Save" id="assign-id" class="btn btn-default" />
                 </div>
             </div>
         </div>
@@ -48,27 +48,28 @@
             <h4>Questions</h4>
             <hr />
             <div id="all-questions">
-                <p> All questions</p>
                 <div class="hidden" id="question-count"> @Model.Questions.Count</div>
                 @for (var x = 0; x < Model.Questions.Count; x++)
                 {
                     @Html.HiddenFor(model => Model.Questions[x].Id)
                     <div class="panel panel-default">
                         <div class="panel-heading question-heading"> <strong>Question @(Model.Questions[x].Id + 1) </strong></div>
-                        <div id="question-body" class="panel-body">
-                            @Html.EditorFor(model => Model.Questions[x].Content, new { htmlAttributes = new { @class = "form-control question-content-input" } })
-                            <a href="#@x" data-toggle="collapse">Answers</a>
-                            <div id="@x" class="collapse answers-body">
+                        <div id="@x" class="panel-body question-list">
+                            <span class="hidden" id="position-count">@x</span>
+                            <input type="text" id="" name="" class="form-control question-content" value="@Model.Questions[x].Content" />
+                            <a href="#drop@(x)" data-toggle="collapse">Answers</a>
+                            <div id="drop@(x)" class="collapse answers-body">
                                 <button type="button" class="btn btn-success btn-xs add-button" id="add-answer-button-{{~}}"> Add Answer </button>
                                 @for (var i = 0; i < Model.Questions[x].Answers.Count; i++)
                                 {
-                                    <div class="col-md-12 new-answer-holder">
-                                        <div class="col-md-8 answer-content-input">
+                                    <div id="question@(i)" class="col-xs-12 new-answer-holder">
+                                        <button type="button" id="delete-this-@(x)-@i" class="btn btn-danger btn-xs delete-current-answer">x</button>
+                                        <div class="col-xs-8 answer-content-input">
                                             @Html.HiddenFor(model => Model.Questions[x].Answers[i].Id)
-                                            @Html.EditorFor(model => Model.Questions[x].Answers[i].Content, new { htmlAttributes = new { @class = "form-control" } })
+                                            <input type="text" id="" name="" class="form-control content-@x" value="@Model.Questions[x].Answers[i].Content" />
                                         </div>
-                                        <div class="col-md-4 answer-iscorrect-input">
-                                            @Html.EditorFor(model => Model.Questions[x].Answers[i].IsCorrect, new { htmlAttributes = new { @class = "edit-checkbox" } })
+                                        <div class="col-xs-1 answer-iscorrect-input">
+                                            <input type="checkbox" id="" name="" class="edit-checkbox is-correct-@x" value="@Model.Questions[x].Answers[i].IsCorrect" />
                                         </div>
                                     </div>
                                 }
@@ -93,6 +94,6 @@
 </div>
 
 @section Scripts{
-    @Scripts.Render("~/Scripts/AddContent.js");
+    @Scripts.Render("~/Scripts/AddContent.js")
 
 }

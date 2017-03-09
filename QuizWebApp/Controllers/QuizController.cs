@@ -72,19 +72,21 @@ namespace QuizWebApp.Controllers
         }
 
         // GET: Quiz/Delete/5
+        [AllowAnonymous]
         public ActionResult Delete(int id)
         {
-            return View();
+            return View(_quizStorage.GetQuizById(id));
         }
 
         // POST: Quiz/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        [AllowAnonymous]
+        public ActionResult Delete(int id, Quiz newQuiz, FormCollection collection)
         {
             try
             {
                 // TODO: Add delete logic here
-
+                _quizStorage.DeleteContent(id, newQuiz);
                 return RedirectToAction("Index");
             }
             catch

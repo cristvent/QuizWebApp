@@ -41,13 +41,18 @@
         <dd>
             @foreach (var item in Model.Questions)
             {
-                <p><b>@item.Content</b></p>
-                <ul class="list-group">
-                    @foreach (var answers in item.Answers)
-                    {
-                        <li class="list-group-item"> @answers.Content - @answers.IsCorrect </li>
-                    }
-                </ul>
+                <div class="panel panel-default">
+                    <div class="panel-heading question-heading">
+                        <b>@item.Content</b>
+                    </div>
+                    <div class="panel-body detail-body">
+                            @foreach (var answers in item.Answers)
+                            {
+                                <span>@answers.Content - @answers.IsCorrect</span>
+                                <hr class="answer-divider"/>
+                            }
+                    </div>
+                </div>
             }
         </dd>
     </dl>
