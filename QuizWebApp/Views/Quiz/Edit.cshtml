@@ -56,27 +56,43 @@
                         <div class="panel-heading question-heading"> <strong>Question @(Model.Questions[x].Id + 1) </strong></div>
                         <div id="@x" class="panel-body question-list">
                             <span class="hidden" id="position-count">@x</span>
-                            <input type="text" id="" name="" class="form-control question-content" value="@Model.Questions[x].Content" />
+                            <input type="text" id="" name="" class="form-control quest-input question-content-@x" value="@Model.Questions[x].Content" />
                             <a href="#drop@(x)" data-toggle="collapse">Answers</a>
                             <div id="drop@(x)" class="collapse answers-body">
-                                <button type="button" class="btn btn-success btn-xs add-button" id="add-answer-button-{{~}}"> Add Answer </button>
-                                @for (var i = 0; i < Model.Questions[x].Answers.Count; i++)
-                                {
-                                    <div id="question@(i)" class="col-xs-12 new-answer-holder">
-                                        <button type="button" id="delete-this-@(x)-@i" class="btn btn-danger btn-xs delete-current-answer">x</button>
-                                        <div class="col-xs-8 answer-content-input">
-                                            @Html.HiddenFor(model => Model.Questions[x].Answers[i].Id)
-                                            <input type="text" id="" name="" class="form-control content-@x" value="@Model.Questions[x].Answers[i].Content" />
-                                        </div>
-                                        <div class="col-xs-1 answer-iscorrect-input">
-                                            <input type="checkbox" id="" name="" class="edit-checkbox is-correct-@x" value="@Model.Questions[x].Answers[i].IsCorrect" />
-                                        </div>
-                                    </div>
+                                <button type="button" class="btn btn-success btn-xs add-button add-answer-button"> Add Answer </button>
+                                @{
+                                    if (Model.Questions[x].Answers != null)
+                                    {
+                                        for (var i = 0; i < Model.Questions[x].Answers.Count; i++)
+                                        {
+                                            if (Model.Questions[x].Answers[i].Content != null)
+                                            {
+                                                <div id="question@(i)" class="col-xs-12 new-answer-holder">
+                                                    <button type="button" id="delete-this-@(x)-@i" class="btn btn-danger btn-xs delete-current-answer">x</button>
+                                                    <div class="col-xs-8 answer-content-input">
+                                                        @Html.HiddenFor(model => model.Questions[x].Answers[i].Id, new { @class = "answer-id-" + (x) })
+                                                        <input type="text" id="" name="" class="form-control content-@x" value="@Model.Questions[x].Answers[i].Content" />
+                                                    </div>
+                                                    <div class="col-xs-1 answer-iscorrect-input">
+                                                        @if (@Model.Questions[x].Answers[i].IsCorrect == true)
+                                                        {
+                                                            <input checked class="edit-checkbox is-correct-@x check-box" data-val="true" id="" name="" type="checkbox" value="true" />
+                                                        }
+                                                        else
+                                                        {
+                                                            <input class="edit-checkbox is-correct-@x check-box" data-val="true" id="" name="" type="checkbox" value="true" />
+                                                        }
+                                                        <input id="" name="is-correct-@x" type="hidden" value="false" />
+                                                    </div>
+                                                </div>
+                                            }
+                                        }
+                                    }
                                 }
                             </div>
                         </div>
                     </div>
-                }
+                                    }
             </div>
             <hr />
             <div>
@@ -87,7 +103,7 @@
             </div>
         </div>
     </div>
-}
+                                    }
 
 <div>
     @Html.ActionLink("Back to List", "Index")

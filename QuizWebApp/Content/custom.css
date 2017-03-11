@@ -63,11 +63,11 @@
     margin: 4px 0px;
 }
 
-.detail-body{
+.detail-body {
     padding: 5px 5px 0px 5px;
 }
 
-.question-list{
+.question-list {
     padding: 0px 15px;
 }
 
@@ -83,7 +83,7 @@
     padding-top: 0px;
 }
 
-.status-checkbox{
+.status-checkbox {
     margin-left: 0px;
     margin-top: 10px;
 }
@@ -112,7 +112,7 @@
     margin: 15px 0px;
 }
 
-.question-content {
+.quest-input {
     margin-top: 5px;
     width: 90%;
     max-width: none;

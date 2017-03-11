@@ -46,11 +46,18 @@
                         <b>@item.Content</b>
                     </div>
                     <div class="panel-body detail-body">
-                            @foreach (var answers in item.Answers)
+                        @if(item.Answers != null){
+                            foreach (var answers in item.Answers)
                             {
                                 <span>@answers.Content - @answers.IsCorrect</span>
                                 <hr class="answer-divider"/>
                             }
+                        }
+                        else
+                        {
+                            @Html.ActionLink("Add Answers", "Edit", new { id = Model.Id });
+                            <hr class="answer-divider" />
+                        }
                     </div>
                 </div>
             }
