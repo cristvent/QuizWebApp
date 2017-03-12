@@ -5,6 +5,9 @@
 
     var questionCounter = document.getElementById("question-count");
     var nextId = parseInt(questionCounter.innerText);
+    if (isNaN(nextId) === true ) {
+        nextId = 0;
+    }
 
     var addAnswerButtons = document.getElementsByClassName("add-answer-button");
     for (var x = 0; x < addAnswerButtons.length; x++) {
@@ -50,6 +53,7 @@
         for (var x = 0; x < addAnswerButton.length; x++) {
             addAnswerButton[x].addEventListener('click', addAnswer, false);
         }
+        nextId++;
     })
 
     function addAnswer() {

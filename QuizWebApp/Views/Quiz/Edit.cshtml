@@ -48,9 +48,12 @@
             <h4>Questions</h4>
             <hr />
             <div id="all-questions">
-                <div class="hidden" id="question-count"> @Model.Questions.Count</div>
-                @for (var x = 0; x < Model.Questions.Count; x++)
-                {
+               
+                <div class="hidden" id="question-count">@if (Model.Questions != null) { @Model.Questions.Count}</div>
+                 @if (Model.Questions != null)
+                 {
+                     for (var x = 0; x < Model.Questions.Count; x++)
+                     {
                     @Html.HiddenFor(model => Model.Questions[x].Id)
                     <div class="panel panel-default">
                         <div class="panel-heading question-heading"> <strong>Question @(Model.Questions[x].Id + 1) </strong></div>
@@ -92,7 +95,9 @@
                             </div>
                         </div>
                     </div>
+                                        }
                                     }
+
             </div>
             <hr />
             <div>
