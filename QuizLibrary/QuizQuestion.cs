@@ -7,18 +7,19 @@ using System.ComponentModel.DataAnnotations;
 
 namespace QuizLibrary
 {
-    public class QuizQuestion
+    public class Question
     {
         [Required]
-        public int Id { get; set; }
+        public int QuestionId { get; set; }
+        public int QuizId { get; set; }
         public string Category { get; set; }
         [Required]
         public string Content { get; set; }
         [Required]
-        public List<QuizAnswer> Answers { get; set; }
+        public List<Answer> Answers { get; set; }
         public override string ToString()
         {
-            return Id + " " + Content;
+            return QuestionId + " " + Content;
         }
     }
 }

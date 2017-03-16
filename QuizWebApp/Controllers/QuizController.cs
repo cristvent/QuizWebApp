@@ -9,7 +9,16 @@ namespace QuizWebApp.Controllers
 {
     public class QuizController : Controller
     {
-        private static QuizStorage _quizStorage = new QuizStorage();
+        private static IQuizStorage _quizStorage;
+
+        public QuizController()
+        {
+            if (_quizStorage == null)
+            {
+                _quizStorage = new QuizStorageToDatabase();
+                //_quizRepo.LoadSampleQuestions();
+            }
+        }
         // GET: Quiz
         [AllowAnonymous]
         public ActionResult Index()
@@ -65,9 +74,9 @@ namespace QuizWebApp.Controllers
                 _quizStorage.EditQuiz(id, quizChanged);
                 return RedirectToAction("Index");
             }
-            catch
+            catch(Exception ex)
             {
-                return View();
+                return View(_quizStorage.GetQuizById(id));
             }
         }
 

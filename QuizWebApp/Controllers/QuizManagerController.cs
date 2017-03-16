@@ -35,7 +35,7 @@ namespace QuizWebApp.Controllers
 
         // POST: QuizManager/Create
         [HttpPost]
-        public ActionResult Create(QuizQuestion newQuestion, FormCollection collection)
+        public ActionResult Create(Question newQuestion, FormCollection collection)
         {
             try
             {
@@ -59,7 +59,7 @@ namespace QuizWebApp.Controllers
 
         // POST: QuizManager/Edit/5
         [HttpPost]
-        public ActionResult Edit(QuizQuestion newQuestion)
+        public ActionResult Edit(Question newQuestion)
         {
             try
             {

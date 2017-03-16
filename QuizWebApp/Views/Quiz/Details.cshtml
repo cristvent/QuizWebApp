@@ -55,7 +55,7 @@
                         }
                         else
                         {
-                            @Html.ActionLink("Add Answers", "Edit", new { id = Model.Id });
+                            @Html.ActionLink("Add Answers", "Edit", new { id = Model.QuizId });
                             <hr class="answer-divider" />
                         }
                     </div>
@@ -65,6 +65,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.QuizId }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

@@ -49,17 +49,37 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IQuizStorage.cs" />
+    <Compile Include="Migrations\201703141429303_InitialCreate.cs" />
+    <Compile Include="Migrations\201703141429303_InitialCreate.Designer.cs">
+      <DependentUpon>201703141429303_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703142143419_migrationAfterAnswerMode.cs" />
+    <Compile Include="Migrations\201703142143419_migrationAfterAnswerMode.Designer.cs">
+      <DependentUpon>201703142143419_migrationAfterAnswerMode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Quiz.cs" />
     <Compile Include="QuizAnswer.cs" />
+    <Compile Include="QuizDbContext.cs" />
     <Compile Include="QuizQuestion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuizRepository.cs" />
-    <Compile Include="QuizStorage.cs" />
+    <Compile Include="QuizStorageInMemory.cs" />
+    <Compile Include="QuizStorageToDatabase.cs" />
     <Compile Include="RequiredAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201703141429303_InitialCreate.resx">
+      <DependentUpon>201703141429303_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703142143419_migrationAfterAnswerMode.resx">
+      <DependentUpon>201703142143419_migrationAfterAnswerMode.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

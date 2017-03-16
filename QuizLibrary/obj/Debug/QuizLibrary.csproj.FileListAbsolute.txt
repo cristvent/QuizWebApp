@@ -1,10 +1,13 @@
+C:\Users\Cristian\codecamp\m2-c#\webApp\QuizLibrary\QuizLibrary\bin\Debug\QuizLibrary.dll.config
 C:\Users\Cristian\codecamp\m2-c#\webApp\QuizLibrary\QuizLibrary\bin\Debug\QuizLibrary.dll
 C:\Users\Cristian\codecamp\m2-c#\webApp\QuizLibrary\QuizLibrary\bin\Debug\QuizLibrary.pdb
-C:\Users\Cristian\codecamp\m2-c#\webApp\QuizLibrary\QuizLibrary\obj\Debug\QuizLibrary.dll
-C:\Users\Cristian\codecamp\m2-c#\webApp\QuizLibrary\QuizLibrary\obj\Debug\QuizLibrary.pdb
-C:\Users\Cristian\codecamp\m2-c#\webApp\QuizLibrary\QuizLibrary\obj\Debug\QuizLibrary.csprojResolveAssemblyReference.cache
-C:\Users\Cristian\codecamp\m2-c#\webApp\QuizLibrary\QuizLibrary\bin\Debug\QuizLibrary.dll.config
 C:\Users\Cristian\codecamp\m2-c#\webApp\QuizLibrary\QuizLibrary\bin\Debug\EntityFramework.dll
 C:\Users\Cristian\codecamp\m2-c#\webApp\QuizLibrary\QuizLibrary\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\Cristian\codecamp\m2-c#\webApp\QuizLibrary\QuizLibrary\bin\Debug\EntityFramework.xml
 C:\Users\Cristian\codecamp\m2-c#\webApp\QuizLibrary\QuizLibrary\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Cristian\codecamp\m2-c#\webApp\QuizLibrary\QuizLibrary\obj\Debug\QuizLibrary.Migrations.InitialCreate.resources
+C:\Users\Cristian\codecamp\m2-c#\webApp\QuizLibrary\QuizLibrary\obj\Debug\QuizLibrary.Migrations.migrationAfterAnswerMode.resources
+C:\Users\Cristian\codecamp\m2-c#\webApp\QuizLibrary\QuizLibrary\obj\Debug\QuizLibrary.csproj.GenerateResource.Cache
+C:\Users\Cristian\codecamp\m2-c#\webApp\QuizLibrary\QuizLibrary\obj\Debug\QuizLibrary.dll
+C:\Users\Cristian\codecamp\m2-c#\webApp\QuizLibrary\QuizLibrary\obj\Debug\QuizLibrary.pdb
+C:\Users\Cristian\codecamp\m2-c#\webApp\QuizLibrary\QuizLibrary\obj\Debug\QuizLibrary.csprojResolveAssemblyReference.cache

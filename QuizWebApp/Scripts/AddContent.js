@@ -1,12 +1,13 @@
 ﻿$(document).ready(function () {
     var addContentButton = document.getElementById("add-content-button"),
         contentHolder = document.getElementById("question-holder"),
+        quizId = document.getElementById("quiz-id"),
         addAnswerButton;
 
     var questionCounter = document.getElementById("question-count");
     var nextId = parseInt(questionCounter.innerText);
-    if (isNaN(nextId) === true ) {
-        nextId = 0;
+    if (isNaN(nextId) === true) {
+        nextId = 1;
     }
 
     var addAnswerButtons = document.getElementsByClassName("add-answer-button");
@@ -19,7 +20,8 @@
     '<strong> Question {{#}} </strong>' +
     '</div>' +
     '<div id="{{~}}" class="panel-body question-list">' +
-    '<input type="text" id="Questions[{{~}}].Id" name="Questions[{{~}}].Id" value="{{~}}" class="hidden"/>' +
+    //'<input type="text" id="Questions[{{~}}].QuestionId" name="Questions[{{~}}].QuestionId" value="{{#}}" class="hidden"/>' +
+    '<input type="text" id="Questions[{{~}}].QuizId" name="Questions[{{~}}].QuizId" value="' + quizId.innerText + '" class="hidden"/>' +
     '<input type="text" id="" name="" class="form-control quest-input question-content-{{~}}"/>' +
     '<a href="#drop{{~}}" data-toggle="collapse">Answers</a>' +
     '<div id="drop{{~}}" class="collapse answers-body">' +
@@ -32,7 +34,8 @@
     '<div class="col-xs-12 new-answer-holder">' +
     '<button type="button" id="delete-this-{{#}}-{{~}}" class="btn btn-danger btn-xs delete-new-answer">x</button>' +
     '<div class="col-xs-8 answer-content-input">' +
-    '<input type="text" id="" name="" class="hidden answer-id-{{#}}"/>' +
+    //'<input type="text" id="" name="" class="hidden answer-id-{{#}}"/>' +
+    //'<input type="text" id="" name="" class="hidden answer-question-id-{{#}}"/>' +
     '<input type="text" id="" name="" class="form-control content-{{#}}"/>' +
     '</div>' +
     '<div class="col-xs-1 answer-iscorrect-input">' +
@@ -82,8 +85,7 @@
     }
 
     function deleteThisNew() {
-        var element = document.getElementById(this.id);
-        element.parentElement.parentElement.remove();
+        this.parentElement.remove();
     }
 
     var assignId = document.getElementById("assign-id");
@@ -99,15 +101,19 @@
             var answersContent = document.getElementsByClassName("content-" + questionPosition);
             var answerIsCorrect = document.getElementsByClassName("is-correct-" + questionPosition);
             var answerId = document.getElementsByClassName("answer-id-" + questionPosition);
+            var answerQuestionId = document.getElementsByClassName("answer-question-id-" + questionPosition);
 
             for (var i = 0; i < answersContent.length; i++) {
                 answersContent[i].id = "Questions[" + x + "].Answers[" + i + "].Content";
                 answersContent[i].name = "Questions[" + x + "].Answers[" + i + "].Content";
                 answerIsCorrect[i].id = "Questions[" + x + "].Answers[" + i + "].IsCorrect";
                 answerIsCorrect[i].name = "Questions[" + x + "].Answers[" + i + "].IsCorrect";
-                answerId[i].name = "Questions[" + x + "].Answers[" + i + "].Id";
-                answerId[i].id = "Questions[" + x + "].Answers[" + i + "].Id";
-
+                //answerId[i].name = "Questions[" + x + "].Answers[" + i + "].AnswerId";
+                //answerId[i].id = "Questions[" + x + "].Answers[" + i + "].AnswerId";
+                //answerId[i].value = i+1;
+                //answerQuestionId[i].name = "Questions[" + x + "].Answers[" + i + "].QuestionId";
+                //answerQuestionId[i].id = "Questions[" + x + "].Answers[" + i + "].QuestionId";
+                //answerQuestionId[i].value = parseInt(questionPosition) + 1;
             }
         }
 

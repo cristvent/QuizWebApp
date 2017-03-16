@@ -8,7 +8,7 @@ namespace QuizLibrary
 {
     public class QuizRepository
     {
-        private List<QuizQuestion> _questionList = new List<QuizQuestion>();
+        private List<Question> _questionList = new List<Question>();
         private static List<string> _questionTypeList = new List<string>();
         private static Random _randy = new Random();
         private static int nextId = 0;
@@ -24,15 +24,15 @@ namespace QuizLibrary
             return _questionTypeList;
         }
 
-        public List<QuizQuestion> GetQuestions()
+        public List<Question> GetQuestions()
         {
             return _questionList;
         }
 
-        public List<QuizQuestion> GetQuestions(int maxNumberOfQuestions)
+        public List<Question> GetQuestions(int maxNumberOfQuestions)
         {
             // Holder list to fill and return. Length based on maxNumberOfQuestions
-            List<QuizQuestion> returnList = new List<QuizQuestion>();
+            List<Question> returnList = new List<Question>();
 
             // Fill holder list and fill based on the index position of the random number in the main question list
             for (int i = 0; i < maxNumberOfQuestions; i++)
@@ -45,60 +45,60 @@ namespace QuizLibrary
             return returnList;
         }
 
-        public QuizQuestion GetQuestionById(int id)
+        public Question GetQuestionById(int id)
         {
-            return _questionList.Find(question => question.Id == id);
+            return _questionList.Find(question => question.QuestionId == id);
         }
 
-        public void UpdateQuestionById(QuizQuestion updateQuestion)
+        public void UpdateQuestionById(Question updateQuestion)
         {
-            _questionList.RemoveAll(question => question.Id == updateQuestion.Id);
+            _questionList.RemoveAll(question => question.QuestionId == updateQuestion.QuestionId);
             _questionList.Add(updateQuestion);
         }
 
-        public QuizQuestion GetQuestion()
+        public Question GetQuestion()
         {
             return GetQuestions(1)[0];
         }
 
-        public void AddQuestion(QuizQuestion newQuestion)
+        public void AddQuestion(Question newQuestion)
         {
-            newQuestion.Id = nextId++;
+            newQuestion.QuestionId = nextId++;
             _questionList.Add(newQuestion);
         }
 
         public void DeleteQuestion(int id)
         {
-            _questionList.RemoveAll(question => question.Id == id);
+            _questionList.RemoveAll(question => question.QuestionId == id);
         }
 
         public void LoadSample()
         {
-            QuizQuestion newQuestion = new QuizQuestion()
+            Question newQuestion = new Question()
             {
                 Category = "Geography",
                 Content = "What state are we in right now?",
-                Answers = new List<QuizAnswer>
+                Answers = new List<Answer>
                 {
-                    new QuizAnswer{
-                        Id = 1,
+                    new Answer{
+                        AnswerId = 1,
                         Content = "California",
                         IsCorrect = false
                     },
-                    new QuizAnswer{
-                        Id = 2,
+                    new Answer{
+                        AnswerId = 2,
                         Content = "Texas",
                         IsCorrect = false
                     },
-                    new QuizAnswer
+                    new Answer
                     {
-                        Id = 3,
+                        AnswerId = 3,
                         Content = "Georgia",
                         IsCorrect = true
                     },
-                    new QuizAnswer
+                    new Answer
                     {
-                        Id = 4,
+                        AnswerId = 4,
                         Content = "Florida",
                         IsCorrect = false
                     }

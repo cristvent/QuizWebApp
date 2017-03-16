@@ -7,20 +7,20 @@ using System.Threading.Tasks;
 
 namespace QuizLibrary
 {
-    public class QuizAnswer
+    public class Answer
     {
         [Required]
-        public int Id { get; set; }
+        public int AnswerId { get; set; }
+        public int QuestionId { get; set; }
         [Required]
         public bool IsCorrect { get; set; }
         [Required]
         public string Content { get; set; }
-        public string ImageUrl { get; set; }
         public string Reason { get; set; }
 
         public override string ToString()
         {
-            return Id + " " + Content + " " + IsCorrect;
+            return AnswerId + " " + Content + " " + IsCorrect;
         }
 
     }

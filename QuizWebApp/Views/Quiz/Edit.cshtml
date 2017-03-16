@@ -14,7 +14,7 @@
             <h4>Quiz</h4>
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            @Html.HiddenFor(model => model.Id)
+            @Html.HiddenFor(model => model.QuizId)
             <div class="form-group">
                 @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -48,55 +48,59 @@
             <h4>Questions</h4>
             <hr />
             <div id="all-questions">
-               
-                <div class="hidden" id="question-count">@if (Model.Questions != null) { @Model.Questions.Count}</div>
-                 @if (Model.Questions != null)
-                 {
-                     for (var x = 0; x < Model.Questions.Count; x++)
-                     {
-                    @Html.HiddenFor(model => Model.Questions[x].Id)
-                    <div class="panel panel-default">
-                        <div class="panel-heading question-heading"> <strong>Question @(Model.Questions[x].Id + 1) </strong></div>
-                        <div id="@x" class="panel-body question-list">
-                            <span class="hidden" id="position-count">@x</span>
-                            <input type="text" id="" name="" class="form-control quest-input question-content-@x" value="@Model.Questions[x].Content" />
-                            <a href="#drop@(x)" data-toggle="collapse">Answers</a>
-                            <div id="drop@(x)" class="collapse answers-body">
-                                <button type="button" class="btn btn-success btn-xs add-button add-answer-button"> Add Answer </button>
-                                @{
-                                    if (Model.Questions[x].Answers != null)
-                                    {
-                                        for (var i = 0; i < Model.Questions[x].Answers.Count; i++)
+
+                <div class="hidden" id="question-count">@if (Model.Questions != null){ @Model.Questions.Count}</div>
+                <div class="hidden" id="quiz-id">@Model.QuizId</div>
+
+                @if (Model.Questions != null)
+                {
+                    for (var x = 0; x < Model.Questions.Count; x++)
+                    {
+                        @Html.HiddenFor(model => Model.Questions[x].QuestionId)
+                        @Html.HiddenFor(model => Model.Questions[x].QuizId)
+                        <div class="panel panel-default">
+                            <div class="panel-heading question-heading"> <strong>Question @(Model.Questions[x].QuestionId) </strong></div>
+                            <div id="@x" class="panel-body question-list">
+                                <span class="hidden" id="position-count">@x</span>
+                                <input type="text" id="" name="" class="form-control quest-input question-content-@x" value="@Model.Questions[x].Content" />
+                                <a href="#drop@(x)" data-toggle="collapse">Answers</a>
+                                <div id="drop@(x)" class="collapse answers-body">
+                                    <button type="button" class="btn btn-success btn-xs add-button add-answer-button"> Add Answer </button>
+                                    @{
+                                        if (Model.Questions[x].Answers != null)
                                         {
-                                            if (Model.Questions[x].Answers[i].Content != null)
+                                            for (var i = 0; i < Model.Questions[x].Answers.Count; i++)
                                             {
-                                                <div id="question@(i)" class="col-xs-12 new-answer-holder">
-                                                    <button type="button" id="delete-this-@(x)-@i" class="btn btn-danger btn-xs delete-current-answer">x</button>
-                                                    <div class="col-xs-8 answer-content-input">
-                                                        @Html.HiddenFor(model => model.Questions[x].Answers[i].Id, new { @class = "answer-id-" + (x) })
-                                                        <input type="text" id="" name="" class="form-control content-@x" value="@Model.Questions[x].Answers[i].Content" />
+                                                if (Model.Questions[x].Answers[i].Content != null)
+                                                {
+                                                    <div id="question@(i)" class="col-xs-12 new-answer-holder">
+                                                        <button type="button" id="delete-this-@(x)-@i" class="btn btn-danger btn-xs delete-current-answer">x</button>
+                                                        <div class="col-xs-8 answer-content-input">
+                                                            @Html.HiddenFor(model => model.Questions[x].Answers[i].AnswerId, new { @class = "answer-id-" + (x) })
+                                                            @Html.HiddenFor(model => model.Questions[x].Answers[i].QuestionId, new { @class = "answer-question-id-" + (x) })
+                                                            <input type="text" id="" name="" class="form-control content-@x" value="@Model.Questions[x].Answers[i].Content" />
+                                                        </div>
+                                                        <div class="col-xs-1 answer-iscorrect-input">
+                                                            @if (@Model.Questions[x].Answers[i].IsCorrect == true)
+                                                            {
+                                                                <input checked class="edit-checkbox is-correct-@x check-box" data-val="true" id="" name="" type="checkbox" value="true" />
+                                                            }
+                                                            else
+                                                            {
+                                                                <input class="edit-checkbox is-correct-@x check-box" data-val="true" id="" name="" type="checkbox" value="true" />
+                                                            }
+                                                            <input id="" name="is-correct-@x" type="hidden" value="false" />
+                                                        </div>
                                                     </div>
-                                                    <div class="col-xs-1 answer-iscorrect-input">
-                                                        @if (@Model.Questions[x].Answers[i].IsCorrect == true)
-                                                        {
-                                                            <input checked class="edit-checkbox is-correct-@x check-box" data-val="true" id="" name="" type="checkbox" value="true" />
-                                                        }
-                                                        else
-                                                        {
-                                                            <input class="edit-checkbox is-correct-@x check-box" data-val="true" id="" name="" type="checkbox" value="true" />
-                                                        }
-                                                        <input id="" name="is-correct-@x" type="hidden" value="false" />
-                                                    </div>
-                                                </div>
+                                                }
                                             }
                                         }
                                     }
-                                }
+                                </div>
                             </div>
                         </div>
-                    </div>
+                                            }
                                         }
-                                    }
 
             </div>
             <hr />
@@ -108,7 +112,7 @@
             </div>
         </div>
     </div>
-                                    }
+                                        }
 
 <div>
     @Html.ActionLink("Back to List", "Index")
