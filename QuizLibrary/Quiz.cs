@@ -9,6 +9,10 @@ namespace QuizLibrary
 {
     public class Quiz
     {
+        public Quiz()
+        {
+            Questions = new List<Question>();
+        }
         [Required]
         public int QuizId { get; set; }
         [Required]

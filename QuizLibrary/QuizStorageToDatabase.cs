@@ -28,29 +28,28 @@ namespace QuizLibrary
                     if (item.QuestionId == 0)
                     {
                         db.QuestionTable.Add(item);
-                        db.SaveChanges();
                     }
                     else
                     {
-                        var quizOld = db.QuizTable.Find(id);
-                        db.QuizTable.Attach(quizOld);
-                        var entry = db.Entry(quizOld);
-                        entry.State = EntityState.Modified;
-                        db.Entry(item).State = EntityState.Modified;
-                        db.Entry(item).Collection(q => q.Answers).Load();
                         foreach (var answer in item.Answers)
                         {
-                            var answerEntry = db.Entry(answer);
-                            answerEntry.State = EntityState.Modified;
+                            if (answer.AnswerId == 0)
+                            {
+                                db.AnswerTable.Add(answer);
+                            }
+                            else
+                            {
+                                db.Entry(answer).State = EntityState.Modified;
+                            }
                         }
-                        db.SaveChanges();
+                        db.Entry(item).State = EntityState.Modified;
                     }
-
                 }
+                db.QuizTable.Attach(quizNew);
+                db.Entry(quizNew).State = EntityState.Modified;
+                db.SaveChanges();
             }
-
         }
-
 
         public List<Quiz> GetQuizAll()
         {

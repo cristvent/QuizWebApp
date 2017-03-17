@@ -20,6 +20,7 @@
     '<strong> Question {{#}} </strong>' +
     '</div>' +
     '<div id="{{~}}" class="panel-body question-list">' +
+    '<span class="hidden" id="question-count-db-{{~}}">0</span>' +
     //'<input type="text" id="Questions[{{~}}].QuestionId" name="Questions[{{~}}].QuestionId" value="{{#}}" class="hidden"/>' +
     '<input type="text" id="Questions[{{~}}].QuizId" name="Questions[{{~}}].QuizId" value="' + quizId.innerText + '" class="hidden"/>' +
     '<input type="text" id="" name="" class="form-control quest-input question-content-{{~}}"/>' +
@@ -34,8 +35,8 @@
     '<div class="col-xs-12 new-answer-holder">' +
     '<button type="button" id="delete-this-{{#}}-{{~}}" class="btn btn-danger btn-xs delete-new-answer">x</button>' +
     '<div class="col-xs-8 answer-content-input">' +
-    //'<input type="text" id="" name="" class="hidden answer-id-{{#}}"/>' +
-    //'<input type="text" id="" name="" class="hidden answer-question-id-{{#}}"/>' +
+                                        //'<input type="text" id="" name="" class="hidden answer-id-{{#}}"/>' +
+    '<input type="text" id="" name="" class="hidden answer-question-id-{{#}}"/>' +
     '<input type="text" id="" name="" class="form-control content-{{#}}"/>' +
     '</div>' +
     '<div class="col-xs-1 answer-iscorrect-input">' +
@@ -55,9 +56,9 @@
         var addAnswerButton = document.getElementsByClassName("add-answer-button");
         for (var x = 0; x < addAnswerButton.length; x++) {
             addAnswerButton[x].addEventListener('click', addAnswer, false);
-        }
+                                    }
         nextId++;
-    })
+                                    })
 
     function addAnswer() {
         var answerHolder = document.getElementById(this.parentElement.id);
@@ -70,23 +71,23 @@
         var deleteNewButtons = document.getElementsByClassName("delete-new-answer");
         for (var x = 0 ; x < deleteNewButtons.length; x++) {
             deleteNewButtons[x].addEventListener("click", deleteThisNew, false);
-        }
-    };
+                                    }
+                                    };
 
     var deleteButton = document.getElementsByClassName("delete-current-answer");
 
     for (var x = 0 ; x < deleteButton.length; x++) {
         deleteButton[x].addEventListener("click", deleteThisCurrent, false);
-    }
+                                    }
 
     function deleteThisCurrent() {
         var element = document.getElementById(this.id);
         element.parentElement.remove();
-    }
+                                    }
 
     function deleteThisNew() {
         this.parentElement.remove();
-    }
+                                    }
 
     var assignId = document.getElementById("assign-id");
 
@@ -108,14 +109,15 @@
                 answersContent[i].name = "Questions[" + x + "].Answers[" + i + "].Content";
                 answerIsCorrect[i].id = "Questions[" + x + "].Answers[" + i + "].IsCorrect";
                 answerIsCorrect[i].name = "Questions[" + x + "].Answers[" + i + "].IsCorrect";
-                //answerId[i].name = "Questions[" + x + "].Answers[" + i + "].AnswerId";
-                //answerId[i].id = "Questions[" + x + "].Answers[" + i + "].AnswerId";
-                //answerId[i].value = i+1;
-                //answerQuestionId[i].name = "Questions[" + x + "].Answers[" + i + "].QuestionId";
-                //answerQuestionId[i].id = "Questions[" + x + "].Answers[" + i + "].QuestionId";
-                //answerQuestionId[i].value = parseInt(questionPosition) + 1;
-            }
-        }
+                                        //answerId[i].name = "Questions[" + x + "].Answers[" + i + "].AnswerId";
+                                        //answerId[i].id = "Questions[" + x + "].Answers[" + i + "].AnswerId";
+                                        //answerId[i].value = i+1;
+                answerQuestionId[i].name = "Questions[" + x + "].Answers[" + i + "].QuestionId";
+                answerQuestionId[i].id = "Questions[" + x + "].Answers[" + i + "].QuestionId";
+                var questIdInDatabase = document.getElementById("question-count-db-" + x).innerText;
+                answerQuestionId[i].value = questIdInDatabase;
+                                    }
+                                    }
 
-    })
-});
+                                    })
+                                    });

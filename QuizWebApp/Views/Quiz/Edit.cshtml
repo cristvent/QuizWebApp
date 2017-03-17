@@ -56,11 +56,12 @@
                 {
                     for (var x = 0; x < Model.Questions.Count; x++)
                     {
-                        @Html.HiddenFor(model => Model.Questions[x].QuestionId)
-                        @Html.HiddenFor(model => Model.Questions[x].QuizId)
                         <div class="panel panel-default">
-                            <div class="panel-heading question-heading"> <strong>Question @(Model.Questions[x].QuestionId) </strong></div>
+                            <div class="panel-heading question-heading"> <strong>Question @(x+1) </strong></div>
                             <div id="@x" class="panel-body question-list">
+                                @Html.HiddenFor(model => Model.Questions[x].QuestionId)
+                                @Html.HiddenFor(model => Model.Questions[x].QuizId)
+                                <span class="hidden" id="question-count-db-@x">@Model.Questions[x].QuestionId</span>
                                 <span class="hidden" id="position-count">@x</span>
                                 <input type="text" id="" name="" class="form-control quest-input question-content-@x" value="@Model.Questions[x].Content" />
                                 <a href="#drop@(x)" data-toggle="collapse">Answers</a>

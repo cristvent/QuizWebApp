@@ -69,6 +69,7 @@ namespace QuizWebApp.Controllers
         public ActionResult Edit(int id, Quiz quizChanged, FormCollection collection)
         {
             try
+
             {
                 // TODO: Add update logic here
                 _quizStorage.EditQuiz(id, quizChanged);
