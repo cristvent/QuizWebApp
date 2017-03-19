@@ -1,27 +1,24 @@
 ﻿$(document).ready(function () {
+    // Declared required variables 
     var addContentButton = document.getElementById("add-content-button"),
         contentHolder = document.getElementById("question-holder"),
         quizId = document.getElementById("quiz-id"),
         addAnswerButton;
 
+    // Checked question count generated from DB. If none, start count at 1 since itll be the first question
     var questionCounter = document.getElementById("question-count");
     var nextId = parseInt(questionCounter.innerText);
     if (isNaN(nextId) === true) {
         nextId = 1;
     }
 
-    var addAnswerButtons = document.getElementsByClassName("add-answer-button");
-    for (var x = 0; x < addAnswerButtons.length; x++) {
-        addAnswerButtons[x].addEventListener('click', addAnswer, false);
-    }
-
+    // Question template to generate html for question holder (panel and dropdown)
     var questionTemplate =
     '<div class="panel-heading question-heading">' +
     '<strong> Question {{#}} </strong>' +
     '</div>' +
     '<div id="{{~}}" class="panel-body question-list">' +
     '<span class="hidden" id="question-count-db-{{~}}">0</span>' +
-    //'<input type="text" id="Questions[{{~}}].QuestionId" name="Questions[{{~}}].QuestionId" value="{{#}}" class="hidden"/>' +
     '<input type="text" id="Questions[{{~}}].QuizId" name="Questions[{{~}}].QuizId" value="' + quizId.innerText + '" class="hidden"/>' +
     '<input type="text" id="" name="" class="form-control quest-input question-content-{{~}}"/>' +
     '<a href="#drop{{~}}" data-toggle="collapse">Answers</a>' +
@@ -31,11 +28,11 @@
     '</div>' +
     '</div>';
 
+    // Answer template to generate html with required input and elements 
     var answerTemplate =
     '<div class="col-xs-12 new-answer-holder">' +
     '<button type="button" id="delete-this-{{#}}-{{~}}" class="btn btn-danger btn-xs delete-new-answer">x</button>' +
     '<div class="col-xs-8 answer-content-input">' +
-                                        //'<input type="text" id="" name="" class="hidden answer-id-{{#}}"/>' +
     '<input type="text" id="" name="" class="hidden answer-question-id-{{#}}"/>' +
     '<input type="text" id="" name="" class="form-control content-{{#}}"/>' +
     '</div>' +
@@ -45,6 +42,7 @@
     '</div>' +
     '</div>';
 
+    // Used question template to generate a new question holder
     addContentButton.addEventListener("click", function () {
         var questionTemp = questionTemplate.replace(/{{~}}/g, nextId).replace(/{{#}}/g, (nextId + 1));
         var questionHolder = document.createElement("div");
@@ -56,10 +54,11 @@
         var addAnswerButton = document.getElementsByClassName("add-answer-button");
         for (var x = 0; x < addAnswerButton.length; x++) {
             addAnswerButton[x].addEventListener('click', addAnswer, false);
-                                    }
+        }
         nextId++;
-                                    })
+    })
 
+    // Used answer template to generate a new answer element.
     function addAnswer() {
         var answerHolder = document.getElementById(this.parentElement.id);
         var answerHolderCount = document.getElementById(answerHolder.parentElement.id)
@@ -71,53 +70,70 @@
         var deleteNewButtons = document.getElementsByClassName("delete-new-answer");
         for (var x = 0 ; x < deleteNewButtons.length; x++) {
             deleteNewButtons[x].addEventListener("click", deleteThisNew, false);
-                                    }
-                                    };
+        }
+    };
 
-    var deleteButton = document.getElementsByClassName("delete-current-answer");
+    // Added event listenr to add answer button, to add new answer
+    var addAnswerButtons = document.getElementsByClassName("add-answer-button");
+    for (var x = 0; x < addAnswerButtons.length; x++) {
+        addAnswerButtons[x].addEventListener('click', addAnswer, false);
+    }
 
-    for (var x = 0 ; x < deleteButton.length; x++) {
-        deleteButton[x].addEventListener("click", deleteThisCurrent, false);
-                                    }
+    // Added event listeners to the delete button element attached to the content rendered.
+    var deleteCurrentButton = document.getElementsByClassName("delete-current-answer");
+    for (var x = 0 ; x < deleteCurrentButton.length; x++) {
+        deleteCurrentButton[x].addEventListener("click", deleteThisCurrent, false);
+    }
 
+    // Hides and changes property value to flag answer as deleted. Appears deleted in the DOM. 
     function deleteThisCurrent() {
-        var element = document.getElementById(this.id);
-        element.parentElement.remove();
-                                    }
+        this.children[0].value = "true";
+        this.parentElement.classList.add("hidden");
+    }
 
+    // Deletes answer element created in session
     function deleteThisNew() {
         this.parentElement.remove();
-                                    }
+    }
 
-    var assignId = document.getElementById("assign-id");
+    var submitToDb = document.getElementById("submitToDb-Button");
 
-    assignId.addEventListener("click", function () {
-        var holder = document.getElementsByClassName("question-list");
-        for (var x = 0; x < holder.length; x++) {
-            var questionPosition = holder[x].id;
+    // Adding correct attributes and their values ** Pending code refactor
+    submitToDb.addEventListener("click", function () {
+        // Collecting a list of all the question holders
+        var questionList = document.getElementsByClassName("question-list");
+
+        // Loop through question holder list 
+        for (var x = 0; x < questionList.length; x++) {
+
+            // Get question element holder id
+            var questionPosition = questionList[x].id;
+
+            // Get question input element id and add attributes / values
             var questionContent = document.getElementsByClassName("question-content-" + questionPosition);
             questionContent[0].id = "Questions[" + x + "].Content";
             questionContent[0].name = "Questions[" + x + "].Content";
 
+            // Get all question answers properties required for form collection 
             var answersContent = document.getElementsByClassName("content-" + questionPosition);
             var answerIsCorrect = document.getElementsByClassName("is-correct-" + questionPosition);
-            var answerId = document.getElementsByClassName("answer-id-" + questionPosition);
             var answerQuestionId = document.getElementsByClassName("answer-question-id-" + questionPosition);
 
-            for (var i = 0; i < answersContent.length; i++) {
+            // Get answer count 
+            var answersList = answersContent.length;
+           
+            // Loop through answer list and set each answers properties required for form collection
+            for (var i = 0; i < answersList; i++) {
                 answersContent[i].id = "Questions[" + x + "].Answers[" + i + "].Content";
                 answersContent[i].name = "Questions[" + x + "].Answers[" + i + "].Content";
                 answerIsCorrect[i].id = "Questions[" + x + "].Answers[" + i + "].IsCorrect";
                 answerIsCorrect[i].name = "Questions[" + x + "].Answers[" + i + "].IsCorrect";
-                                        //answerId[i].name = "Questions[" + x + "].Answers[" + i + "].AnswerId";
-                                        //answerId[i].id = "Questions[" + x + "].Answers[" + i + "].AnswerId";
-                                        //answerId[i].value = i+1;
                 answerQuestionId[i].name = "Questions[" + x + "].Answers[" + i + "].QuestionId";
                 answerQuestionId[i].id = "Questions[" + x + "].Answers[" + i + "].QuestionId";
                 var questIdInDatabase = document.getElementById("question-count-db-" + x).innerText;
                 answerQuestionId[i].value = questIdInDatabase;
-                                    }
-                                    }
+            }
+        }
 
-                                    })
-                                    });
+    })
+});

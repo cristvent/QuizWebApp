@@ -40,7 +40,7 @@
             </div>
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Save" id="assign-id" class="btn btn-default" />
+                    <input type="submit" value="Save" id="submitToDb-button" class="btn btn-default" />
                 </div>
             </div>
         </div>
@@ -56,31 +56,42 @@
                 {
                     for (var x = 0; x < Model.Questions.Count; x++)
                     {
+                        //Main holder for an single question
                         <div class="panel panel-default">
-                            <div class="panel-heading question-heading"> <strong>Question @(x+1) </strong></div>
+                            <div class="panel-heading question-heading"> <strong>Question @(x + 1) </strong></div>
                             <div id="@x" class="panel-body question-list">
                                 @Html.HiddenFor(model => Model.Questions[x].QuestionId)
                                 @Html.HiddenFor(model => Model.Questions[x].QuizId)
                                 <span class="hidden" id="question-count-db-@x">@Model.Questions[x].QuestionId</span>
-                                <span class="hidden" id="position-count">@x</span>
                                 <input type="text" id="" name="" class="form-control quest-input question-content-@x" value="@Model.Questions[x].Content" />
                                 <a href="#drop@(x)" data-toggle="collapse">Answers</a>
                                 <div id="drop@(x)" class="collapse answers-body">
+                                    @*Button to add a new, single answer*@
                                     <button type="button" class="btn btn-success btn-xs add-button add-answer-button"> Add Answer </button>
                                     @{
                                         if (Model.Questions[x].Answers != null)
                                         {
                                             for (var i = 0; i < Model.Questions[x].Answers.Count; i++)
                                             {
-                                                if (Model.Questions[x].Answers[i].Content != null)
+                                                if (Model.Questions[x].Answers[i].Content != null && Model.Questions[x].Answers[i].DeleteFlag != true)
                                                 {
+                                                    // Main container for a single answer
                                                     <div id="question@(i)" class="col-xs-12 new-answer-holder">
-                                                        <button type="button" id="delete-this-@(x)-@i" class="btn btn-danger btn-xs delete-current-answer">x</button>
+
+                                                        @*Delete button to luanch events in JS file. Holdes the answers deletion flag*@
+                                                        <button type="button" id="delete-this-@(x)-@i" class="btn btn-danger btn-xs delete-current-answer">
+                                                            X
+                                                            @Html.HiddenFor(model => model.Questions[x].Answers[i].DeleteFlag)
+                                                        </button>
+
+                                                        @*Holder for the answer question id (hidden), answer id (hidden), and input box (visible)*@
                                                         <div class="col-xs-8 answer-content-input">
                                                             @Html.HiddenFor(model => model.Questions[x].Answers[i].AnswerId, new { @class = "answer-id-" + (x) })
                                                             @Html.HiddenFor(model => model.Questions[x].Answers[i].QuestionId, new { @class = "answer-question-id-" + (x) })
                                                             <input type="text" id="" name="" class="form-control content-@x" value="@Model.Questions[x].Answers[i].Content" />
                                                         </div>
+
+                                                        @*Holder for the answer 'is correct' checkbox*@
                                                         <div class="col-xs-1 answer-iscorrect-input">
                                                             @if (@Model.Questions[x].Answers[i].IsCorrect == true)
                                                             {
@@ -104,12 +115,9 @@
                                         }
 
             </div>
-            <hr />
             <div>
+                @*Button to generate new question holder (panel with dropdown)*@
                 <button type="button" class="btn btn-primary btn-xs" id="add-content-button"> Add New Questions </button>
-            </div>
-            <br />
-            <div id="question-holder">
             </div>
         </div>
     </div>

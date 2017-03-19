@@ -16,7 +16,7 @@ namespace QuizLibrary
         public bool IsCorrect { get; set; }
         [Required]
         public string Content { get; set; }
-        public string Reason { get; set; }
+        public bool DeleteFlag { get; set; }
 
         public override string ToString()
         {

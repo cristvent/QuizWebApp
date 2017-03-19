@@ -11,12 +11,21 @@ namespace QuizLibrary
     {
         public void AddQuiz(Quiz newQuiz)
         {
-            throw new NotImplementedException();
+            using(var db = new QuizDbContext())
+            {
+                db.QuizTable.Add(newQuiz);
+                db.SaveChanges();
+            }
         }
 
         public void DeleteContent(int id)
         {
-            throw new NotImplementedException();
+            using(var db = new QuizDbContext())
+            {
+                var quizToDelete = db.QuizTable.Find(id);
+                db.QuizTable.Remove(quizToDelete);
+                db.SaveChanges();
+            }
         }
 
         public void EditQuiz(int id, Quiz quizNew)
