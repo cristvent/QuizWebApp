@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="row">
+    <div class="container">
+        <div class="col-md-8">
+            <br />
+            <br />
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <p id="quest-num"></p>
+                </div>
+
+                <div class="panel-body">
+                    <p id="quest-content"></p>
+                    <ul id="quest-answers" class="list-group">
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <span id="quizid-holder" class="hidden">@ViewBag.QuizId</span>
+                <button class="btn btn-sm" type="button" id="next-question-button">Next Question</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/Scripts/quizGame.js")
+}

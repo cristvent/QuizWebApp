@@ -96,7 +96,7 @@
         this.parentElement.remove();
     }
 
-    var submitToDb = document.getElementById("submitToDb-Button");
+    var submitToDb = document.getElementById("submit-to-db-btn");
 
     // Adding correct attributes and their values ** Pending code refactor
     submitToDb.addEventListener("click", function () {

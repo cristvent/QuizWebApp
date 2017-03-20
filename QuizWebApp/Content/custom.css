@@ -12,6 +12,10 @@
     margin: 0px -15px;
 }
 
+.game-answer:hover{
+    background-color: #f7f7f7;
+}
+
 #navbar-custom {
     background-color: #768286;
     border-color: #D7CDC5;

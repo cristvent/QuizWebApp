@@ -9,5 +9,7 @@ namespace QuizLibrary
         void EditQuiz(int id, Quiz quizChanged);
         List<Quiz> GetQuizAll();
         Quiz GetQuizById(int id);
+
+        Answer GetAnswerById(int id);
     }
 }

@@ -27,6 +27,11 @@ namespace QuizLibrary
             return _quizStorage.Find(quiz => quiz.QuizId == id);
         }
 
+        public Answer GetAnswerById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public void AddQuiz(Quiz newQuiz)
         {
             newQuiz.QuizId = quizCounter++;

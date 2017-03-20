@@ -11,7 +11,7 @@ namespace QuizLibrary
     {
         public void AddQuiz(Quiz newQuiz)
         {
-            using(var db = new QuizDbContext())
+            using (var db = new QuizDbContext())
             {
                 db.QuizTable.Add(newQuiz);
                 db.SaveChanges();
@@ -20,7 +20,7 @@ namespace QuizLibrary
 
         public void DeleteContent(int id)
         {
-            using(var db = new QuizDbContext())
+            using (var db = new QuizDbContext())
             {
                 var quizToDelete = db.QuizTable.Find(id);
                 db.QuizTable.Remove(quizToDelete);
@@ -60,6 +60,20 @@ namespace QuizLibrary
             }
         }
 
+        private static Random _randy = new Random();
+        public QuestionViewModel GetQuestions(int id)
+        {
+            using (var db = new QuizDbContext())
+            {
+                var qList = db.QuestionTable
+                    .Where(question => question.QuizId == id)
+                    .Include(question => question.Answers)
+                    .ToList();
+
+                return new QuestionViewModel(qList[_randy.Next(0, qList.Count)]);
+            }
+        }
+
         public List<Quiz> GetQuizAll()
         {
             using (var db = new QuizDbContext())
@@ -84,6 +98,14 @@ namespace QuizLibrary
                     db.Entry(question).Collection(quest => quest.Answers).Load();
                 }
                 return quiz;
+            }
+        }
+
+        public Answer GetAnswerById(int id)
+        {
+            using(var db = new QuizDbContext())
+            {
+                return db.AnswerTable.Find(id);
             }
         }
     }

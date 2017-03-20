@@ -49,7 +49,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnswerResults.cs" />
+    <Compile Include="AnswerSubmission.cs" />
+    <Compile Include="AnswerViewModel.cs" />
     <Compile Include="IQuizStorage.cs" />
+    <Compile Include="QuestionViewModel.cs" />
     <Compile Include="Quiz.cs" />
     <Compile Include="QuizAnswer.cs" />
     <Compile Include="QuizDbContext.cs" />

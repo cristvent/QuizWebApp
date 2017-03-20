@@ -35,6 +35,7 @@
             @Html.DisplayFor(modelItem => item.Active)
         </td>
         <td>
+            @Html.ActionLink("Take", "../GameQuestionArea/Index", new { id = item.QuizId }) |
             @Html.ActionLink("Edit", "Edit", new { id=item.QuizId }) |
             @Html.ActionLink("Details", "Details", new { id=item.QuizId }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.QuizId })

@@ -179,9 +179,11 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\GameQuestionAreaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\QuizController.cs" />
+    <Compile Include="Controllers\QuizGameController.cs" />
     <Compile Include="Controllers\QuizManagerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -210,6 +212,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\AddContent.js" />
+    <Content Include="Scripts\quizGame.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\QuizAnswers.js" />
@@ -257,6 +260,7 @@
     <Content Include="Views\Quiz\Edit.cshtml" />
     <Content Include="Views\Quiz\Details.cshtml" />
     <Content Include="Views\Quiz\Delete.cshtml" />
+    <Content Include="Views\GameQuestionArea\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
