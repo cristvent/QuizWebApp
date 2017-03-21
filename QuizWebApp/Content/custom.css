@@ -12,7 +12,24 @@
     margin: 0px -15px;
 }
 
-.game-answer:hover{
+.game-panel-heading {
+    padding: 2px 15px;
+}
+
+    .game-panel-heading p {
+        margin: 0px;
+    }
+
+.game-panel-body h4 {
+    font-weight: bold;
+    margin-top: 0px;
+}
+
+.game-panel-body ul {
+    margin-bottom: 0px;
+}
+
+.game-answer:hover {
     background-color: #f7f7f7;
 }
 

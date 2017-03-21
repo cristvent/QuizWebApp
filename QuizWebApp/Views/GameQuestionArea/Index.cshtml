@@ -8,19 +8,20 @@
             <br />
             <br />
             <div class="panel panel-default">
-                <div class="panel-heading">
+                <div class="panel-heading game-panel-heading">
                     <p id="quest-num"></p>
                 </div>
 
-                <div class="panel-body">
-                    <p id="quest-content"></p>
+                <div class="panel-body game-panel-body">
+                    <h4 id="quest-content"></h4>
                     <ul id="quest-answers" class="list-group">
                     </ul>
                 </div>
             </div>
             <div>
                 <span id="quizid-holder" class="hidden">@ViewBag.QuizId</span>
-                <button class="btn btn-sm" type="button" id="next-question-button">Next Question</button>
+                <button class="btn btn-sm" type="button" id="last-question-button">Last</button>
+                <button class="btn btn-sm" type="button" id="next-question-button">Next</button>
             </div>
         </div>
     </div>
