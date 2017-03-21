@@ -16,6 +16,34 @@
     padding: 2px 15px;
 }
 
+.navbar-inverse .navbar-collapse {
+    border-color: white;
+}
+
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover{
+    background-color: none;
+}
+
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus{
+    background-color: grey;
+}
+
+.navbar-inverse .navbar-nav .open .dropdown-menu > li > a {
+    color: grey;
+}
+
+.createpage-check{
+    margin-top: 10px;
+}
+
+@media (max-width: 767px) {
+    .navbar-inverse .navbar-nav .open .dropdown-menu > li > a {
+        color: white;
+    }
+}
+.navbar-inverse .navbar-nav .open .dropdown-menu .divider {
+    background-color: white;
+}
     .game-panel-heading p {
         margin: 0px;
     }
@@ -26,7 +54,7 @@
 }
 
 .game-panel-body ul {
-    margin-bottom: 0px;
+    margin-bottom: 20px;
 }
 
 .game-answer:hover {

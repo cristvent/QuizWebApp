@@ -4,9 +4,11 @@
         lastQuestionButton = document.getElementById('last-question-button'),
         questionArea = document.getElementById('question-area'),
         quizId = document.getElementById("quizid-holder"),
+        wrongsHolder = document.getElementById("wrongs-holder"),
         currentQuestionId,
         sessionQuiz,
         questionCounter = 0,
+        wrongCounter = 5,
         questNum = document.getElementById("quest-num"),
         questContent = document.getElementById("quest-content"),
         questAnswers = document.getElementById("quest-answers");
@@ -19,11 +21,7 @@
         clearContent();
         questionCounter++;
         if (questionCounter >= sessionQuiz.Questions.length) {
-            clearContent();
-            questContent.innerText = "All Questions Have Been Asked";
-            questNum.innerText = "Done";
-            nextQuestionButton.innerText = "Start Over";
-            questionCounter = -1;
+            quizOver("Done!", "All questions complete");
             return;
         }
         displayQuestion();
@@ -50,10 +48,12 @@
 
     // Function to get content and holders ready to display
     var displayQuestion = function displayQuestion() {
+        wrongsHolder.innerText = wrongCounter;
         if (nextQuestionButton.innerText === "Start Over") {
             nextQuestionButton.innerText = "Next";
+            lastQuestionButton.classList.remove("hidden");
         }
-        currentQuest = sessionQuiz.Questions[questionCounter];
+        var currentQuest = sessionQuiz.Questions[questionCounter];
         questContent.innerText = currentQuest.Content;
         questNum.innerText = "Question " + (questionCounter + 1);
 
@@ -72,16 +72,39 @@
     // Using AJAX to make a REST call. Checking the DB if clicked answer is correct
     function isAnswerCorrect() {
         var callUrl = "/api/quizgame/isanswercorrect?answerId=" + this.id;
-        element = document.getElementById(this.id);
+        var element = document.getElementById(this.id);
         $.getJSON(callUrl, function (data) {
             element.style.backgroundColor = (data.IsCorrect === true) ? "#def0de" : "#f7dcdb";
-            if (data.IsCorrect === true) {
-
-            }
+            element.style.pointerEvents = "none";
+            if (data.IsCorrect === false) {
+                wrongTracker();
+            };
         });
     }
 
-    // Clear holders 
+    // Keep traker of wrongs and continues or ends the game
+    var wrongTracker = function wrongTracker() {
+        wrongCounter--;
+        if (wrongCounter == 0) {
+            quizOver("Oops!", "You got too many wrong.");
+            return;
+        };
+        wrongsHolder.innerText = wrongCounter;
+    };
+
+    // Function that accepts a text to display in panel head and body. Game over 
+    var quizOver = function quizOver(headmsg, bodymsg) {
+        clearContent();
+        lastQuestionButton.classList.add("hidden");
+        wrongsHolder.innerText = wrongCounter;
+        nextQuestionButton.innerText = "Start Over";
+        questNum.innerText = headmsg;
+        questContent.innerText = bodymsg;
+        questionCounter = -1;
+        wrongCounter = 5;
+    };
+
+    // Clears holders 
     var clearContent = function clearContent() {
         questNum.innerText = "";
         questContent.innerText = "";

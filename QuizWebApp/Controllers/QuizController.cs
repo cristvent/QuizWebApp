@@ -42,7 +42,6 @@ namespace QuizWebApp.Controllers
 
         // POST: Quiz/Create
         [HttpPost]
-        [AllowAnonymous]
         public ActionResult Create(Quiz newQuiz, FormCollection collection)
         {
             try
@@ -58,7 +57,6 @@ namespace QuizWebApp.Controllers
         }
 
         // GET: Quiz/Edit/5
-        [AllowAnonymous]
         public ActionResult Edit(int id)
         {
             return View(_quizStorage.GetQuizById(id));
@@ -90,7 +88,6 @@ namespace QuizWebApp.Controllers
 
         // POST: Quiz/Delete/5
         [HttpPost]
-        [AllowAnonymous]
         public ActionResult Delete(int id, FormCollection collection)
         {
             try
