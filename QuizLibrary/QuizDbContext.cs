@@ -9,6 +9,11 @@ namespace QuizLibrary
 {
     class QuizDbContext : DbContext
     {
+        public QuizDbContext()
+            : base ("name=DefaultConnection")
+        {
+        }
+
         public DbSet<Quiz> QuizTable { get; set; }
         public DbSet<Question> QuestionTable { get; set; }
         public DbSet<Answer> AnswerTable { get; set; }
